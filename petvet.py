@@ -70,7 +70,7 @@ def main():
             perform_cat_calculations()
             display_cat_results()
 
-        askAgain = input("\Would you like to process another pet (Y/N)?")
+        askAgain = input("\nWould you like to process another pet (Y/N)?")
         if askAgain.upper() == "N":
             more = False
             print ('Thank you for trusting PET CARE MEDS with your pet vaccines and medication.')
@@ -194,7 +194,9 @@ def get_cat_data():
     print("\nMonthly heart worm prevention medication is recommended for all cats.")
     heart_yesno = input("Would you like to order monthly heartworm medication for " + pet_name + " for only $8.00 (Y/N?) ")
     if heart_yesno.upper()=="Y":
-        pr_chews = PR_CAT_CHEWS
+        num_chews = int(input("How many heart worm chews would you like to order?"))
+        
+        
         
 
 
@@ -217,6 +219,12 @@ def perform_cat_calculations():
          vax_cost = .90 * PR_ALL
 
 
+    ###### chews calc
+    if num_chews > 0:
+        pr_chews = num_chews * PR_CAT_CHEWS
+        
+
+
 
 
    
@@ -236,7 +244,7 @@ def display_cat_results():
     print('********** Vaccine Prices **********')
     print(line)
     print('Cat Vaccines     Total  $' + format( vax_cost, moneyformat ))
-    print('Heart Worm Chews Total  $' + format( PR_CAT_CHEWS, moneyformat ))
+    print('Heart Worm Chews Total  $' + format( pr_chews, moneyformat ))
     print(line)
     print('Sales Tax           $' + format( SALES_TAX, moneyformat))
     print('Total               $' + format( total, moneyformat ))
