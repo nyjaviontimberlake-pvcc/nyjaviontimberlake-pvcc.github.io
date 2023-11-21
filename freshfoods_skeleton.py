@@ -128,19 +128,18 @@ def display_results():
     print('--------------------- WEEKLY PAYROLL REPORT --------------------------')
     print(tab + tab + str(datetime.datetime.now()))
     print(line)
-    titles1 = " Emp Name " + tab + " Job Code " + tab + " Gross " + tab
-    titles2 = " Fed Inc Tax " + tab + " State Inc Tax " + tab + " Social Security " + tab + " Medicare" + tab + " Net "
+    titles1 = " Emp Name " + tab + tab + " Job Code " + tab + " Gross Income " + tab
+    titles2 = " Fed Inc Tax " + tab + " State Inc Tax " + tab + " Social Security " + tab + "Medicare"  + tab + " 401k Contribution " + tab + " Net Pay "
+
     print(titles1 + titles2)
     for i in range(num_emps):
-        data1 = emp[i] + tab + job[i] + "  " + format(gross_pay[i], currency) + tab + format(fed_tax[i], currency) + tab 
-        data2 = format(state_tax[i], currency) + tab + format(soc_sec[i], currency) + tab + format(medicare[i], currency) + tab
-        data3 = format(ret401k[i], currency) + tab + format(net_pay[i], currency) 
+        data1 = emp[i] +  "          " + job[i] + tab + tab + format(gross_pay[i], currency) + tab + tab + "  " + format(fed_tax[i], currency) + tab + "   "  
+        data2 = format(state_tax[i], currency) + tab + "    " + format(soc_sec[i], currency) + tab + "       " + format(medicare[i], currency) + tab + tab
+        data3 = "    " + format(ret401k[i], currency) + "  " + tab + tab + format(net_pay[i], currency) 
         print(data1+ data2 + data3)
     print(line)
     print('********************* TOTAL GROSS: $' + format(total_gross, currency2))
     print('********************* TOTAL Net  : $' + format(total_net, currency2))
-    
-
     
 
 
