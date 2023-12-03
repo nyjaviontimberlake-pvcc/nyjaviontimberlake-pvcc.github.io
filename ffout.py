@@ -118,7 +118,7 @@ def perform_calc():
 
 def create_output_file():
     currency = '8,.2f'
-    line = '\n----------------------------------'
+    line = '\n-------------------------------------------------'
     tab = '\t'
    
 
@@ -128,18 +128,21 @@ def create_output_file():
     f = open(out_file, 'w')
     f.write(line)
     f.write('\n************** FRESH FOODS MARKET ***************')
-    f.write('\n************** WEEKLY PAYROLL REPORT ***************')
+    f.write('\n************** WEEKLY PAYROLL REPORT ************')
+    f.write(line)
     f.write('\n' + tab + str(datetime.datetime.now()))
     f.write(line)
-    titles1 = '\nEmp Name' + tab + 'Code' + tab + 'Gross' + tab
-    titles2 = 'Fed Inc Tax' + tab + 'State Inc Tax' + tab + "Soc Sec" + tab + "Medicare" + tab + "Net"
+    titles1 = '\nEmp Name' + tab + '    ' + 'Code' + tab + tab + 'Gross' + tab + tab 
+    titles2 = 'Fed Inc Tax' + tab  + tab + 'State Inc Tax' + tab + tab + "Soc Sec" + tab+ tab + "Medicare" + tab + tab + '401k' + tab + tab + "Net"
     alltitles = (titles1 + titles2)
     f.write(alltitles)
     ############# CREATE THE MISSING CODE TO F.WRITE OUT EMPLOYEE DATA, ONE LINE AT A TIME #####################
 
     for i in range (num_emps):
-        data1 = '\n' + emp[i] + ' ' + job[i] + format(gross_pay[i], currency)
-        f.write(data1)
+        data1 = '\n' + emp[i] + '     ' + job[i] + tab + tab + '      ' + format(gross_pay[i], currency)  + tab  + tab + format(fed_tax[i], currency) + tab + tab
+        data2 = format(state_tax[i], currency) + tab + '      ' + format(soc_sec[i], currency) + tab + '      ' + format(medicare[i], currency) + tab + tab
+        data3 = data3 = "     " + format(ret401k[i], currency) + tab + '    ' + format(net_pay[i], currency)
+        f.write(data1 + data2 + data3)
     f.write(line)    
     f.write('\n************** Total Gross: $' + format(total_gross, currency))
     f.write('\n************** Total  Net : $' + format(total_net, currency))
